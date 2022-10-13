@@ -3,8 +3,8 @@ import random
 
 
 
-print("help")
-idlist = ["25","329","531","551","30533","530","541","552","33303","30759","350"]
+print("use the help command")
+idlist = ["25","329","531","551","30533","530"]
 password = random.choice(idlist)
 names = ["Charlie","Dave","Jeff","Carmen","Karen","Jeb","Sophia","Patty","Andy","Julia","Millie","Rob","Duncan","Larry"]
 name = random.choice(names)
@@ -20,7 +20,8 @@ while run:
               " \n use get to get information in database \n use leave to exit database \n"
               "use directive to get your goal \n"
               "use done to complete goals \n use login to login to notepad \n"
-              "Hint: Don't use spaces")
+              "Hint: Don't use spaces \n"
+              "Use the help command when stuck")
     elif start == "hi":
         print("Hello there...")
     elif start == "end":
@@ -58,7 +59,8 @@ while run:
                         print("Favorite: No")
 
     elif start == "directive":
-        print("Your goal is to hack into this system and get the access codes to the planetary defense system(PDS). \n "
+        print("Hello, I am operator and your commanding officer in this mission.\n"
+              "Your goal is to hack into this system and get the access codes to the planetary defense system(PDS). \n "
               "The person who had the code is now gone, their name is "+name+". \n "
             "The code was in their notepad so find their password. \n"
             "Their password is the id of their favorite database.")
@@ -68,17 +70,43 @@ while run:
         notepassword = input("Password...")
         if username == name:
             if notepassword == password:
-                print("Access granted... \n"
-                      "Grocery list: \n"
-                      "     Egg \n"
-                      "     Milk \n"
-                      "     More Egg \n"
-                      "     Big Egg \n"
-                      "     Bread \n"
-                      "Codes: \n"
-                      "     Safe: 1452 \n"
-                      "     House: 4180 \n"
-                      "     PDS: "+str(code))
+                database = True
+                print("Access granted...")
+                print("Available notes: \n"
+                                     "Groceries \n"
+                                     "Codes \n"
+                                     "Reminders")
+                while database:
+                    notes = input("Enter...")
+                    if notes == "open":
+                        notelist = input("Open...")
+                        if notelist == "Reminders":
+                            print("Present new mining vehicle to board: 8:00 am \n"
+                                  "Share dyson sphere plan with head engineer over lunch: 12:00 \n"
+                                  "Share PDS code with operator eventually \n"
+                                  "Don't lose the desk key \n"
+                                  "Meet the unknown caller at 6:00 pm")
+
+                        elif notelist == "Groceries":
+                            print("Egg \n"
+                                "Milk \n"
+                                "More Egg \n"
+                                "Big Egg \n"
+                                "Bread \n"
+                                "Steak")
+
+                        elif notelist == "Codes":
+                            print("Safe: 1452 \n"
+                            "House: 4180 \n"
+                            "PDS: " + str(code))
+
+                    elif notes == "leave":
+                        database = False
+                        print("Exiting notes...")
+
+                    elif notes == "help":
+                        print("Use open to enter a note \n"
+                              "Use leave to logout of notes")
             else:
                 print("Wrong password...")
         else:
